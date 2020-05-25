@@ -6,6 +6,7 @@ from Screens.Screen import Screen
 from enigma import * 
 from Config import *
 from Language import _
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
 Directory = os.path.dirname(sys.modules[__name__].__file__)        
 MinStart = int(choice(range(59)))
@@ -256,7 +257,7 @@ def StartProcess(link,type,Personal):
               return
                           
         def SaveList(list):
-            jw = open('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/SelectBack','w')		
+            jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/SelectBack'),'w')		
             for dir,name in list:	
               jw.write(dir+'---'+name+'\n')			
             jw.close()
@@ -264,7 +265,7 @@ def StartProcess(link,type,Personal):
         def SavePersonalSetting():
             try:
               os.system('mkdir '+Directory+'/NGsetting/SelectFolder')
-              jw = open('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/Select')
+              jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/Select'))
               jjw = jw.readlines()
               jw.close()
               count=1
@@ -285,7 +286,7 @@ def StartProcess(link,type,Personal):
                         
         def TransferPersonalSetting():
                 try:
-                  jw = open('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/SelectBack')
+                  jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/SelectBack'))
                   jjw = jw.readlines()
                   jw.close()
                   for x in jjw:
@@ -300,7 +301,7 @@ def StartProcess(link,type,Personal):
                                 
         def CreateUserbouquetPersonalSetting():
             try:
-                jw = open('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/SelectBack')
+                jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/SelectBack'))
                 jjw = jw.readlines()
                 jw.close()			
             except:

@@ -1,11 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from Components.Language import language
-from Tools.Directories import resolveFilename, SCOPE_LANGUAGE
+from Tools.Directories import resolveFilename, SCOPE_LANGUAGE, SCOPE_PLUGINS
 import os, gettext
 
+
 PluginLanguageDomain = "NGsetting"
-PluginLanguagePath = "/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Po"
+PluginLanguagePath = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting/Po")
 
 def localeInit():
 	lang = language.getLanguage()[:2] 

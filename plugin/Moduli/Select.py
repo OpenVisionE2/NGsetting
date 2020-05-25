@@ -11,6 +11,7 @@ from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixm
 from enigma import *
 from Config import *
 from Language import _
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
 class MenuListSelect(MenuList):
         def __init__(self, list):
@@ -24,7 +25,7 @@ class ListSelect():
                                 
         def readSaveList(self):
             try:
-              jw = open('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/Select')
+              jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/Select'))
               jjw = jw.readlines()
               jw.close()
               list=[]
@@ -40,7 +41,7 @@ class ListSelect():
             return 
                 
         def SaveList(self,list):
-            jw = open('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/Select','w')		
+            jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/Select'),'w')		
             for dir,name,value in list:	
               if value == '1':
                 jw.write(dir+'---'+name+'\n')			
@@ -101,7 +102,7 @@ class ListSelect():
 class MenuSelect(Screen, ConfigListScreen):
         def __init__(self, session):
             self.session = session
-            skin = "/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Skin/Main.xml"
+            skin = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting/Skin/Main.xml")
             f = open(skin, "r")
             self.skin = f.read()
             f.close()  
@@ -161,9 +162,9 @@ class MenuSelect(Screen, ConfigListScreen):
                         
         def hauptListEntry(self,dir,name,value):				 
             res = [(dir,name,value)]
-            icon = "/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Panel/redpanel.png"		  		
+            icon = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting/Panel/redpanel.png")		  		
             if value == '1':
-              icon = "/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Panel/greenpanel.png"	
+              icon = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting/Panel/greenpanel.png")
             try:
               name= name.split('   ')[0]
             except:

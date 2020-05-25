@@ -2,20 +2,21 @@
 # -*- coding: utf-8 -*-
 from enigma import *
 import os,glob
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 class DeletPy():
         def __init__(self):
             pass
 		
         def Remove(self):
-            for x in glob.glob('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/*'):
+            for x in glob.glob(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/*')):
               jpy=x[-3:]
               if jpy == '.py':
                 os.system('rm -fr '+x)
-            for x in glob.glob('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/*'):
+            for x in glob.glob(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/*')):
               jpy=x[-3:]
               if jpy == '.py':
                 os.system('rm -fr '+x)
-            open('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/__init__.py','w')
+            open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/__init__.py'),'w')
 			
         def RemovePy(self):		
             self.iTimer = eTimer()				

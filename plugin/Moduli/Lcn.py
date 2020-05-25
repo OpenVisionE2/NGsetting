@@ -5,7 +5,7 @@ from enigma import eDVBDB, eServiceReference, eServiceCenter
 from Screens.Screen import Screen
 from enigma import * 
 from Config import *
-
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 import os
 import re
 import xml.etree.cElementTree
@@ -26,7 +26,7 @@ class LCN():
         self.lcnlist = []
         self.markers = []
         self.e2services = []
-        mdom = xml.etree.cElementTree.parse('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/rules.xml')
+        mdom = xml.etree.cElementTree.parse(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/rules.xml'))
         self.root = None
         for x in mdom.getroot():
           if x.tag == "ruleset" and x.get("name") == 'Italy':

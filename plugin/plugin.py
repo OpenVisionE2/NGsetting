@@ -17,6 +17,7 @@ from Moduli.Language import _
 from Moduli.Lcn import *		 
 from Moduli.Select import *
 from Moduli.HeartBeat import *	 
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 Version='1.4'
 
 MinStart = int(choice(range(59)))
@@ -66,7 +67,7 @@ class MenuiSettingE2(Screen, ConfigListScreen):
             self['Blue'].show()				
             self["Key_Lcn"] = Label('')
             self.LcnOn = False			
-            if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/Date') and os.path.exists('/etc/enigma2/lcndb'):		
+            if os.path.exists(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/Date')) and os.path.exists('/etc/enigma2/lcndb'):		
               self['Key_Lcn'].setText(_("Lcn"))	
               self.LcnOn = True
               self['Green'].show()
@@ -154,7 +155,7 @@ class MenuiSettingE2(Screen, ConfigListScreen):
                 
         def ReturnSelect(self):			  
             AutoTimer,NameSat,Data,Type,Personal,DowDate = Load()			
-            if not os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/Select' ) or os.path.getsize('/usr/lib/enigma2/python/Plugins/Extensions/NGsetting/Moduli/NGsetting/Select' ) < 20:	  
+            if not os.path.exists(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/Select')) or os.path.getsize(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/Select')) < 20:	  
               self['Key_Personal'].setText(_("Favourites: No")) 			
               WriteSave(NameSat,AutoTimer,Type,Data,'0',DowDate)				  
                           
