@@ -102,10 +102,9 @@ class ListSelect():
 class MenuSelect(Screen, ConfigListScreen):
         def __init__(self, session):
             self.session = session
-            skin = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting/Skin/Main.xml")
-            f = open(skin, "r")
-            self.skin = f.read()
-            f.close()  
+            from Plugins.Extensions.NGsetting.Skin.Main import *
+            self.skin = skin
+            self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting")
             Screen.__init__(self, session)														
             self.ListSelect = ListSelect()   				
             self['autotimer'] = Label("")  
