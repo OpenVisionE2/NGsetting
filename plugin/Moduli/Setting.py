@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 from random import choice 
 import re,glob,shutil,os,urllib2,time ,sys
 from Screens.Screen import Screen
@@ -249,7 +248,7 @@ def StartProcess(link,type,Personal):
                 except:
                   pass			
                 os.system("mkdir "+Directory+"/NGsetting/Temp/enigma2")
-                os.system("find "+Directory+"/NGsetting/Temp/setting -type f -print(| sed 's/ /\" \"/g'| awk '{ str=$0; sub(/\.\//, \"\", str); gsub(/.*\//, \"\", str);print(\"mv \" $0 \" "+Directory+"/NGsetting/Temp/enigma2/\"str }' | sh")   )
+                os.system("find "+Directory+"/NGsetting/Temp/setting -type f -print| sed 's/ /\" \"/g'| awk '{ str=$0; sub(/\.\//, \"\", str); gsub(/.*\//, \"\", str);print\"mv \" $0 \" "+Directory+"/NGsetting/Temp/enigma2/\"str }' | sh")
                 if  os.path.exists(Directory+"/NGsetting/Temp/enigma2/lamedb"):			
                   return True
               return False
