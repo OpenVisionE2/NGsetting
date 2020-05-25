@@ -47,7 +47,7 @@ class ListSelect():
         def readBouquetsList(self, pwd, bouquetname):
             try:
               f = open(pwd + "/" + bouquetname)
-            except Exception, e:
+            except Exception as e:
               print e
               return                       
             ret = []               
@@ -68,7 +68,7 @@ class ListSelect():
               if filename:
                 try:
                   fb = open(pwd + "/" + filename)
-                except Exception, e:
+                except Exception as e:
                   continue                                       
                 tmp = fb.readline().strip()
                 if tmp[:6] == "#NAME ":

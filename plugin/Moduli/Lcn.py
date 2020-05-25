@@ -73,7 +73,7 @@ class LCN():
             cmd = "x[0] = " + rule
             try:
               exec cmd
-            except Exception, e:
+            except Exception as e:
               print e
 
     def addMarker(self, position, text):
@@ -83,7 +83,7 @@ class LCN():
         self.readE2Services()       
         try:
           f = open(self.dbfile)
-        except Exception, e:
+        except Exception as e:
           print e
           return
         
@@ -160,7 +160,7 @@ class LCN():
     def writeBouquet(self):
         try:
           f = open(self.bouquetfile, "w")
-        except Exception, e:
+        except Exception as e:
           print e
           return               
         f.write("#NAME Digitale Terrestre\n")
