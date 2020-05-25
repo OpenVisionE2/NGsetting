@@ -38,10 +38,9 @@ class MenuListiSettingE2A(MenuList):
 class MenuiSettingE2(Screen, ConfigListScreen):
         def __init__(self, session):
             self.session = session
-            skin = "%s/Skin/Main.xml" % (os.path.dirname(sys.modules[__name__].__file__)) 
-            f = open(skin, "r")
-            self.skin = f.read()
-            f.close()  
+            from Skin.Main import *
+            self.skin = skin
+            self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting")
             Screen.__init__(self, session)									
             self["actions"]  = ActionMap(["OkCancelActions", "ShortcutActions", "WizardActions", "ColorActions", "SetupActions", "NumberActions", "MenuActions", "HelpActions","EPGSelectActions"], {
               "ok"    : self.keyOK,
