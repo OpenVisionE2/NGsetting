@@ -9,6 +9,6 @@ setup (name = 'enigma2-plugin-extensions-ngsetting',
        description = 'NGsetting plugin for Vhannibal settings',
        packages = [pkg],
        package_dir = {pkg: 'plugin'},
-       package_data = {pkg: ['Po/*/LC_MESSAGES/*.mo', 'Skin/Main.xml', 'Panel/*.png', 'Moduli/NGsetting/rules.xml']},
+       package_data = {pkg: ['Po/*/LC_MESSAGES/*.mo', 'Skin/Main.xml', 'Panel/*.png', 'Moduli/NGsetting/rules.xml', 'Moduli/*.pyo']},
        cmdclass = setup_translate.cmdclass, # for translation
       )
