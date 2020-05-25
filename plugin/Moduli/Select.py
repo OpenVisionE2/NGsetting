@@ -1,4 +1,6 @@
-# -*- coding: UTF-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen,ConfigList
 from Components.ActionMap import ActionMap
@@ -48,7 +50,7 @@ class ListSelect():
             try:
               f = open(pwd + "/" + bouquetname)
             except Exception as e:
-              print e
+              print(e)
               return                       
             ret = []               
             while True:

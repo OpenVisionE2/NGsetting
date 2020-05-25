@@ -1,4 +1,6 @@
-# -*- coding: UTF-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
 from enigma import eDVBDB, eServiceReference, eServiceCenter
 from Screens.Screen import Screen
 from enigma import * 
@@ -74,7 +76,7 @@ class LCN():
             try:
               exec cmd
             except Exception as e:
-              print e
+              print(e)
 
     def addMarker(self, position, text):
         self.markers.append([position, text])
@@ -84,7 +86,7 @@ class LCN():
         try:
           f = open(self.dbfile)
         except Exception as e:
-          print e
+          print(e)
           return
         
         while True:
@@ -161,7 +163,7 @@ class LCN():
         try:
           f = open(self.bouquetfile, "w")
         except Exception as e:
-          print e
+          print(e)
           return               
         f.write("#NAME Digitale Terrestre\n")
         for x in self.lcnlist:

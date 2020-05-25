@@ -1,4 +1,5 @@
-# -*- coding: UTF-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import re,os,urllib2,sys
 from enigma import * 
 from Setting import *
