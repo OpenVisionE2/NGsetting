@@ -76,7 +76,7 @@ class LCN():
             try:
               exec cmd
             except Exception as e:
-              print(e)
+              print(str(e))
 
     def addMarker(self, position, text):
         self.markers.append([position, text])
@@ -86,7 +86,7 @@ class LCN():
         try:
           f = open(self.dbfile)
         except Exception as e:
-          print(e)
+          print(str(e))
           return
         
         while True:
@@ -163,7 +163,7 @@ class LCN():
         try:
           f = open(self.bouquetfile, "w")
         except Exception as e:
-          print(e)
+          print(str(e))
           return               
         f.write("#NAME Digitale Terrestre\n")
         for x in self.lcnlist:

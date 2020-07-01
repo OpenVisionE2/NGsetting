@@ -51,7 +51,7 @@ class ListSelect():
             try:
               f = open(pwd + "/" + bouquetname)
             except Exception as e:
-              print(e)
+              print(str(e))
               return                       
             ret = []               
             while True:
