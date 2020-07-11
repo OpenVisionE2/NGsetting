@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division
 
 from Screens.Screen import Screen
 from Components.Pixmap import Pixmap
@@ -49,7 +50,7 @@ skin = """
 	<eLabel position="255,385"  size="1,105"   backgroundColor="#303030"   zPosition="0" />
 	<eLabel position="255,385"  size="620,1"   backgroundColor="#303030"   zPosition="0" />
 
-	<!-- Setting Installed Text / Update -->	
+	<!-- Setting Installed Text // Update -->	
 	<widget position="270,405" size="200,24" name="Key_Green" font="Regular;20" halign="left" foregroundColor="#808080" backgroundColor="#101010" zPosition="1" transparent="1" />
 	<widget position="440,405" size="410,31" name="namesat"  font="Regular;20" halign="left" foregroundColor="#ffffff" backgroundColor="#101010" transparent="1" zPosition="3" />
 
