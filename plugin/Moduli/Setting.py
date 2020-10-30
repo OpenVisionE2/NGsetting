@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from random import choice 
-import re,glob,shutil,os,urllib2,time ,sys
+import re, glob, shutil, os, urllib2, time, sys
 from Screens.Screen import Screen
 from enigma import * 
 from Config import *
@@ -14,11 +14,11 @@ MinStart = int(choice(range(59)))
 def DownloadPlugin(link):	  
         try:   
           req = urllib2.Request(link)
-          req.add_header('User-Agent',"VAS14")
+          req.add_header('User-Agent', "VAS14")
           response = urllib2.urlopen(req)
           link =response.read()
           response.close()
-          Setting = open('/tmp/Plugin.zip','w')
+          Setting = open('/tmp/Plugin.zip', 'w')
           Setting.write(link)
           Setting.close()				
           try:			
@@ -33,7 +33,7 @@ def TimerControl():
         now = time.localtime(time.time())
         Ora = str(now[3]).zfill(2)+':'+str(now[4]).zfill(2)+':'+str(now[5]).zfill(2)
         Date = str(now[2]).zfill(2)+'-'+str(now[1]).zfill(2)+'-'+str(now[0])
-        return '%s ora: %s'%(Date,Ora)
+        return '%s ora: %s'%(Date, Ora)
 
 
 
@@ -108,13 +108,13 @@ def StartSavingTerrestrialChannels():
             return Trasponder	
                         
         def CreateBouquetForce():		
-            WritingBouquetTemporary = open(Directory+'/NGsetting/Temp/TerrestrialChannelListArchive','w')
+            WritingBouquetTemporary = open(Directory+'/NGsetting/Temp/TerrestrialChannelListArchive', 'w')
             WritingBouquetTemporary.write('#NAME terrestre\n')	
             ReadingTempServicelist = open(Directory+'/NGsetting/Temp/ServiceListOldLamedb').readlines()
             for jx in ReadingTempServicelist:
               if jx.find('eeee') != -1:
                  String = jx.split(':')
-                 WritingBouquetTemporary.write('#SERVICE 1:0:%s:%s:%s:%s:%s:0:0:0:\n'% (hex(int(String[4]))[2:],String[0],String[2],String[3],String[1]))
+                 WritingBouquetTemporary.write('#SERVICE 1:0:%s:%s:%s:%s:%s:0:0:0:\n'% (hex(int(String[4]))[2:], String[0], String[2], String[3], String[1]))
             WritingBouquetTemporary.close()	
             
         def SaveBouquetTerrestrial():						
@@ -122,7 +122,7 @@ def StartSavingTerrestrialChannels():
             if not NameDirectory:
               NameDirectory = ForceSearchBouquetTerrestrial()    
             try:
-              shutil.copyfile(NameDirectory,Directory+'/NGsetting/Temp/TerrestrialChannelListArchive')
+              shutil.copyfile(NameDirectory, Directory+'/NGsetting/Temp/TerrestrialChannelListArchive')
               return True
             except :
               pass
@@ -142,7 +142,7 @@ def TransferBouquetTerrestrialFinal():
             if re.search('^userbouquet.*.tv', file):
               f = open("/etc/enigma2/" + file, "r")
               x = f.read()
-              if re.search("#NAME Digitale Terrestre",x, flags=re.IGNORECASE):
+              if re.search("#NAME Digitale Terrestre", x, flags=re.IGNORECASE):
                 return "/etc/enigma2/"+file
           return	
                 
@@ -150,7 +150,7 @@ def TransferBouquetTerrestrialFinal():
           TerrestrialChannelListArchive = open(Directory+'/NGsetting/Temp/TerrestrialChannelListArchive').readlines()   
           DirectoryUserBouquetTerrestrial = RestoreTerrestrial()
           if DirectoryUserBouquetTerrestrial:
-            TrasfBouq = open(DirectoryUserBouquetTerrestrial,'w')		
+            TrasfBouq = open(DirectoryUserBouquetTerrestrial, 'w')		
             for Line in TerrestrialChannelListArchive:
               if Line.lower().find('#name') != -1 :
                 TrasfBouq.write('#NAME Digitale Terrestre\n')
@@ -177,7 +177,7 @@ def SearchIPTV():
 	   else:
 		return iptv_list
                                                  
-def StartProcess(link,type,Personal):    
+def StartProcess(link, type, Personal):    
             
                       
         def LamedbRestore():              
@@ -235,11 +235,11 @@ def StartProcess(link,type,Personal):
         def DownloadSettingAgg(link):	  
             try:   
               req = urllib2.Request(link)
-              req.add_header('User-Agent',"VAS14")
+              req.add_header('User-Agent', "VAS14")
               response = urllib2.urlopen(req)
               link =response.read()
               response.close()
-              Setting = open(Directory+'/NGsetting/Temp/listaE2.zip','w')
+              Setting = open(Directory+'/NGsetting/Temp/listaE2.zip', 'w')
               Setting.write(link)
               Setting.close()				
               if os.path.exists(Directory+"/NGsetting/Temp/listaE2.zip"):
@@ -257,8 +257,8 @@ def StartProcess(link,type,Personal):
               return
                           
         def SaveList(list):
-            jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/SelectBack'),'w')		
-            for dir,name in list:	
+            jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/SelectBack'), 'w')		
+            for dir, name in list:	
               jw.write(dir+'---'+name+'\n')			
             jw.close()
                                 
@@ -275,7 +275,7 @@ def StartProcess(link,type,Personal):
                   jx = x.split('---')
                   newfile = 'userbouquet.NgSetting'+str(count)+'.tv'
                   os.system('cp /etc/enigma2/'+jx[0]+' /'+Directory+'/NGsetting/SelectFolder/'+newfile)
-                  list.append((newfile,jx[1]))						
+                  list.append((newfile, jx[1]))						
                   count = count+1							
                 except:
                   pass	                 
@@ -309,7 +309,7 @@ def StartProcess(link,type,Personal):
             jRewriteBouquet = open("/etc/enigma2/bouquets.tv")
             RewriteBouquet = jRewriteBouquet.readlines()		
             jRewriteBouquet.close()			
-            WriteBouquet=open("/etc/enigma2/bouquets.tv" , "w")
+            WriteBouquet=open("/etc/enigma2/bouquets.tv", "w")
             Counter = 0
             for xx in RewriteBouquet:
               if Counter == 1:

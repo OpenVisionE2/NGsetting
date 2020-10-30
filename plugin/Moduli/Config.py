@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import re,os,urllib2,sys
+import re, os, urllib2, sys
 from enigma import * 
 from Setting import *
 Samanta = ''
@@ -30,7 +30,7 @@ def ConverDate_noyear(data):
 def TestDsl():	  
         try:   
           req = urllib2.Request("http://www.vhannibal.net/%s.php"%Samanta)
-          req.add_header('User-Agent',"VAS14")
+          req.add_header('User-Agent', "VAS14")
           response = urllib2.urlopen(req)
           link =response.read()
           response.close()
@@ -42,13 +42,13 @@ def DownloadSetting():
     list = []   
     try:	
       req = urllib2.Request('http://www.vhannibal.net/asd.php')
-      req.add_header('User-Agent',"VAS14")
+      req.add_header('User-Agent', "VAS14")
       response = urllib2.urlopen(req)
       link =response.read()
       response.close()
       xx =  re.compile('<td><a href="(.+?)">(.+?)</a></td>.*?<td>(.+?)</td>', re.DOTALL).findall(link)
-      for link,name,date in xx:
-        list.append((date,name.replace('Vhannibal ',''),'http://www.vhannibal.net/'+link))	
+      for link, name, date in xx:
+        list.append((date, name.replace('Vhannibal ', ''), 'http://www.vhannibal.net/'+link))	
     except:
       pass	
     return list
@@ -91,9 +91,9 @@ def Load():
       xf.write('Personal = 0\n')	
       xf.write('DowDate = 0\n')		  
       xf.close()	
-    return AutoTimer,NameSat,Data,Type,Personal,DowDate	 	
+    return AutoTimer, NameSat, Data, Type, Personal, DowDate	 	
 	
-def WriteSave(name,autotimer,Type,Data,Personal,DowDate):
+def WriteSave(name, autotimer, Type, Data, Personal, DowDate):
     xf = open(Directory + '/NGsetting/Date', "w")	
     xf.write('AutoTimer = %s\n'%str(autotimer))
     xf.write('NameSat = %s\n'%str(name))	
@@ -106,8 +106,8 @@ def WriteSave(name,autotimer,Type,Data,Personal,DowDate):
 def Plugin():
     try:
       req = urllib2.Request('http://www.vhannibal.net/asu.php')
-      req.add_header('User-Agent',"VAS14")
-      response = urllib2.urlopen(req, None,3)	
+      req.add_header('User-Agent', "VAS14")
+      response = urllib2.urlopen(req, None, 3)	
       link = response.read()
       response.close()
       return  re.compile ('<a href="(.+?)" src="(.+?)">updater</a>').findall(link)

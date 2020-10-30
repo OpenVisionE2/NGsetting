@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from Components.Label import Label
-from Components.ConfigList import ConfigListScreen,ConfigList
+from Components.ConfigList import ConfigListScreen, ConfigList
 from Components.ActionMap import ActionMap
 from Components.MenuList import MenuList
 from Components.Pixmap import Pixmap
@@ -32,7 +32,7 @@ class ListSelect():
               for x in jjw:
                 try:
                   jx = x.split('---')
-                  list.append((jx[0],jx[1].strip()))	
+                  list.append((jx[0], jx[1].strip()))	
                 except:
                   pass			
               return list			
@@ -40,9 +40,9 @@ class ListSelect():
               pass
             return 
                 
-        def SaveList(self,list):
-            jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/Select'),'w')		
-            for dir,name,value in list:	
+        def SaveList(self, list):
+            jw = open(resolveFilename(SCOPE_PLUGINS, 'Extensions/NGsetting/Moduli/NGsetting/Select'), 'w')		
+            for dir, name, value in list:	
               if value == '1':
                 jw.write(dir+'---'+name+'\n')			
             jw.close()
@@ -90,13 +90,13 @@ class ListSelect():
             for x in self.readBouquetsTvList("/etc/enigma2"):
                value='0'		
                try: 
-                 for j,jx in jload:		
+                 for j, jx in jload:		
                    if j == x[0] and jx.find(x[1]) != -1:
                       value='1'
                       break
                except:
                   pass			 
-               self.bouquetlist.append((x[0], x[1],value))
+               self.bouquetlist.append((x[0], x[1], value))
             return self.bouquetlist
                 
 class MenuSelect(Screen, ConfigListScreen):
@@ -127,7 +127,7 @@ class MenuSelect(Screen, ConfigListScreen):
             self.Info()			
             self.Menu()
             self.MenuA()			
-            self["actions"]  = ActionMap(["OkCancelActions", "ShortcutActions", "WizardActions", "ColorActions", "SetupActions", "NumberActions", "MenuActions", "HelpActions","EPGSelectActions"], {
+            self["actions"]  = ActionMap(["OkCancelActions", "ShortcutActions", "WizardActions", "ColorActions", "SetupActions", "NumberActions", "MenuActions", "HelpActions", "EPGSelectActions"], {
               "ok"    : self.OkSelect,
               "up"    : self.keyUp,
               "down"  : self.keyDown,				
@@ -138,7 +138,7 @@ class MenuSelect(Screen, ConfigListScreen):
             }, -1)					
                         
         def Info(self):
-            AutoTimer,NameSat,Data,Type,Personal,DowDate = Load() 				  
+            AutoTimer, NameSat, Data, Type, Personal, DowDate = Load() 				  
             if str(Data) == '0':
               newdate = ('')
             else:
@@ -159,8 +159,8 @@ class MenuSelect(Screen, ConfigListScreen):
         def keyDown(self):
             self['B'].down()					                              
                         
-        def hauptListEntry(self,dir,name,value):				 
-            res = [(dir,name,value)]
+        def hauptListEntry(self, dir, name, value):				 
+            res = [(dir, name, value)]
             icon = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting/Panel/redpanel.png")		  		
             if value == '1':
               icon = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting/Panel/greenpanel.png")
@@ -169,25 +169,25 @@ class MenuSelect(Screen, ConfigListScreen):
             except:
               pass			
             res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 11), size=(20, 20), png=loadPic(icon, 20, 20, 0, 0, 0, 1)))
-            res.append(MultiContentEntryText(pos=(50, 7), size=(425,40),font=0, text=name, flags=RT_HALIGN_LEFT))			
-            res.append(MultiContentEntryText(pos=(0, 0), size=(0,0), font=0, text=dir, flags=RT_HALIGN_LEFT))		
-            res.append(MultiContentEntryText(pos=(0, 0), size=(0,0), font=0, text=value, flags=RT_HALIGN_LEFT))				
+            res.append(MultiContentEntryText(pos=(50, 7), size=(425, 40), font=0, text=name, flags=RT_HALIGN_LEFT))			
+            res.append(MultiContentEntryText(pos=(0, 0), size=(0, 0), font=0, text=dir, flags=RT_HALIGN_LEFT))		
+            res.append(MultiContentEntryText(pos=(0, 0), size=(0, 0), font=0, text=value, flags=RT_HALIGN_LEFT))				
             return res
                         
-        def hauptListEntryA(self,name):				 
+        def hauptListEntryA(self, name):				 
             res = [(name)]	
             try:
               name= name.split('   ')[0]
             except:
               pass			
-            res.append(MultiContentEntryText(pos=(10, 7), size=(425,40),font=0, text=name, flags=RT_HALIGN_LEFT))							
+            res.append(MultiContentEntryText(pos=(10, 7), size=(425, 40), font=0, text=name, flags=RT_HALIGN_LEFT))							
             return res
                         
         def MenuA(self):		
             self.jB = []
             lista = self.ListSelect.readSaveList() 	
             if lista:			
-              for dir,name in lista:			
+              for dir, name in lista:			
                 self.jB.append(self.hauptListEntryA(name))			
             self["A"].setList(self.jB)	
             if not self.jB:			
@@ -199,22 +199,22 @@ class MenuSelect(Screen, ConfigListScreen):
                         
         def Menu(self):		
             self.jA = []
-            for dir,name,value in  self.ListSelect.TvList():
+            for dir, name, value in  self.ListSelect.TvList():
               if  name != 'Digitale Terrestre'  and name != 'Favourites (TV)' and name[2:] != 'Vhannibal Settings' :			
-                self.jA.append(self.hauptListEntry(dir,name,value))			
+                self.jA.append(self.hauptListEntry(dir, name, value))			
             self["B"].setList(self.jA)		
                        
         def OkSelect(self):  
             NewName = self["B"].getCurrent()[0][1]		
             NewDir = self["B"].getCurrent()[0][0]	
             self.list=[]		
-            for dir,name,value in  self.ListSelect.TvList():
+            for dir, name, value in  self.ListSelect.TvList():
               if dir == 	NewDir and name == NewName:
                 if value == '0':
-                  self.list.append((dir,name,'1'))
+                  self.list.append((dir, name, '1'))
               else:
                 if value == '1':
-                  self.list.append((dir,name,'1'))
+                  self.list.append((dir, name, '1'))
             self.ListSelect.SaveList(self.list)
             self.Menu()			
             self.MenuA()                        

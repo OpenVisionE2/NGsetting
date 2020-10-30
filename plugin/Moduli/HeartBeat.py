@@ -5,7 +5,7 @@
 ## credits @ livewinter
 #######
 
-import os,urllib2,sys,json,uuid,time
+import os, urllib2, sys, json, uuid, time
 from enigma import getBoxType
 
 class HeartBeatService():
@@ -14,11 +14,11 @@ class HeartBeatService():
 
 	def __init__(self, version):
 		self.info = {
-			"uid" : 0,
-			"stb_model" : 0,
-	   		"firmware_version" : 0,
-			"vas_installed" : 0,
-			"vas_upgraded" : 0,
+			"uid": 0,
+			"stb_model": 0,
+	   		"firmware_version": 0,
+			"vas_installed": 0,
+			"vas_upgraded": 0,
 			"vas_version": 0,
 		}
 		

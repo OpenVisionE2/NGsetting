@@ -14,7 +14,7 @@ def Bouquet():
       if re.search('^userbouquet.*.tv', file):
         f = open("/etc/enigma2/" + file, "r")
         x = f.read()
-        if re.search("#NAME Digitale Terrestre",x, flags=re.IGNORECASE):
+        if re.search("#NAME Digitale Terrestre", x, flags=re.IGNORECASE):
           return "/etc/enigma2/"+file
     return	
 class LCN():
@@ -172,7 +172,7 @@ class LCN():
               f.write("#SERVICE 1:64:0:0:0:0:0:0:0:0:\n")
               f.write("#DESCRIPTION ------- " + self.markers[0][1] + " -------\n")
               self.markers.remove(self.markers[0])
-          refstr = "1:0:1:%x:%x:%x:%x:0:0:0:" % (x[4],x[3],x[2],x[1]) # temporary ref
+          refstr = "1:0:1:%x:%x:%x:%x:0:0:0:" % (x[4], x[3], x[2], x[1]) # temporary ref
           refsplit = eServiceReference(refstr).toString().split(":")
           for tref in self.e2services:
             tmp = tref.split(":")
