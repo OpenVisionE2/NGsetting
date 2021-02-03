@@ -7,9 +7,9 @@
 
 import os, urllib2, sys, json, uuid, time
 try:
-	from enigma import getBoxType				# for OpenPLi and other Enigma distributions
+	from enigma import getBoxType
 except ImportError:
-	from boxbranding import getBoxType			# for OpenATV and other Enigma distributions
+	from boxbranding import getBoxType
 
 class HeartBeatService():
 	
