@@ -5,6 +5,7 @@
 ## credits @ livewinter
 #######
 
+from __future__ import print_function
 import os, urllib2, sys, json, uuid, time
 try:
 	from enigma import getBoxType
