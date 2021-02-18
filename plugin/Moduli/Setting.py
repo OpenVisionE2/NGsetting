@@ -79,7 +79,8 @@ def StartSavingTerrestrialChannels():
               LamedbFile = open('/etc/enigma2/lamedb')
               while True:
                 line = LamedbFile.readline()
-                if not line: break                                                             
+                if not line:
+                        break                                                             
                 if not (inTransponder or inService):
                   if line.find('transponders') == 0:
                     inTransponder = True
@@ -196,7 +197,8 @@ def StartProcess(link, type, Personal):
               infile = open("/etc/enigma2/lamedb")
               while True:
                 line = infile.readline()
-                if not line: break
+                if not line:
+                        break
                 if not (inTransponder or inService):
                   if line.find('transponders') == 0:
                     inTransponder = True

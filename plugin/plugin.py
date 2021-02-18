@@ -374,9 +374,9 @@ class NgSetting():
               start_time2 += 86400   		
             if start_time3 < (now + 60):  
               start_time3 += 86400   				  
-            delta1 = int(start_time1 - now);              
-            delta2 = int(start_time2 - now);  
-            delta3 = int(start_time3 - now); 			
+            delta1 = int(start_time1 - now)
+            delta2 = int(start_time2 - now)
+            delta3 = int(start_time3 - now)
             self.iTimer1.start((1000*delta1), True)                                
             self.iTimer2.start((1000*delta2), True)  
             self.iTimer3.start((1000*delta3), True)  
