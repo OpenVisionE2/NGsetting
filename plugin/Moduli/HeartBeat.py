@@ -97,8 +97,8 @@ class HeartBeatService():
 		
 		#test to check time.time bug (needs to be removed)
 		fileinfojson["time_full"] = self.now	
-		fileinfojson["python_version"]	= sys.version
-		fileinfojson["system_date"]	 = os.popen("date").read()
+		fileinfojson["python_version"] = sys.version
+		fileinfojson["system_date"] = os.popen("date").read()
 		
 		fileinfojson = json.dumps(fileinfojson)
 		print("MYDEBUGLOGLINE - fileinfojson API data = %s" % fileinfojson)

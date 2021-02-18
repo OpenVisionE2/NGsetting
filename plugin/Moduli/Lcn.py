@@ -15,7 +15,7 @@ def Bouquet():
         f = open("/etc/enigma2/" + file, "r")
         x = f.read()
         if re.search("#NAME Digitale Terrestre", x, flags=re.IGNORECASE):
-          return "/etc/enigma2/"+file
+          return "/etc/enigma2/" + file
     return	
 class LCN():
     service_types_tv = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 22) || (type == 25) || (type == 134) || (type == 195)'
@@ -109,7 +109,7 @@ class LCN():
     
     def readE2Services(self):
         self.e2services = []
-        refstr = '%s ORDER BY name'%(self.service_types_tv)
+        refstr = '%s ORDER BY name' % (self.service_types_tv)
         ref = eServiceReference(refstr)
         serviceHandler = eServiceCenter.getInstance()
         servicelist = serviceHandler.list(ref)
@@ -142,19 +142,19 @@ class LCN():
           STOP = 0                      
           i = 0            
           for xx in LineMaker:
-            if i+1 < len(LineMaker):
+            if i + 1 < len(LineMaker):
               START = LineMaker[i]                
-              STOP = LineMaker[i+1]            
-              if STOP-START < 3:               
+              STOP = LineMaker[i + 1]            
+              if STOP - START < 3:               
                 PosDelMaker.append(START)
-                PosDelMaker.append(START+1)
+                PosDelMaker.append(START + 1)
               if uBQ[START] == uBQ[STOP]:                        
                 PosDelMaker.append(STOP)
-                PosDelMaker.append(STOP+1)    
-            i +=1                         
+                PosDelMaker.append(STOP + 1)    
+            i += 1                         
           PosDelMaker.reverse()            
           for delmark in PosDelMaker:                                                       
-            del uBQ[delmark-1]                       
+            del uBQ[delmark - 1]                       
           for x in uBQ:
             WriteFile.write(x)                                       
           WriteFile.close()  	
