@@ -1,7 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from random import choice 
-import re, glob, shutil, os, urllib2, time, sys
+import re
+import glob
+import shutil
+import os
+import urllib2
+import time
+import sys
 from Screens.Screen import Screen
 from enigma import * 
 from Config import *

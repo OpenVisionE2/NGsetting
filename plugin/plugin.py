@@ -10,7 +10,8 @@ from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
 from Components.MultiContent import MultiContentEntryText
 from enigma import *
-import sys, os
+import sys
+import os
 from Moduli.Setting import *
 from Moduli.Config import *
 from Moduli.Language import _	

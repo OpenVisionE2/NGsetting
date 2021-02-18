@@ -6,7 +6,12 @@
 #######
 
 from __future__ import print_function
-import os, urllib2, sys, json, uuid, time
+import os
+import urllib2
+import sys
+import json
+import uuid
+import time
 try:
 	from enigma import getBoxType
 except ImportError:

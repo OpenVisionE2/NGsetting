@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from enigma import *
-import os, glob
+import os
+import glob
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 class DeletPy():
         def __init__(self):
