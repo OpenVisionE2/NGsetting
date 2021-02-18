@@ -276,12 +276,12 @@ class MenuiSettingE2(Screen, ConfigListScreen):
             except:	
               njData = 999999				
             if NameSat != self.name or Type != self.jType :
-              self.session.openWithCallback(self.OnDownload, MessageBox, _('The new configurations are saved\nSetting: %s\nDate: %s\nThe choice is different from the previous\nDo you want to proceed with the manual upgrade?')%(self.name, self["B"].getCurrent()[0][4]), MessageBox.TYPE_YESNO, timeout = 20)
+              self.session.openWithCallback(self.OnDownload, MessageBox, _('The new configurations are saved\nSetting: %s\nDate: %s\nThe choice is different from the previous\nDo you want to proceed with the manual upgrade?')%(self.name, self["B"].getCurrent()[0][4]), MessageBox.TYPE_YESNO, timeout=20)
             else:		
               if njData > nData :
-                self.session.openWithCallback(self.OnDownload, MessageBox, _('The new configurations are saved\nSetting: %s\nDate: %s \n The new setting has a more recent date\nDo you want to proceed with the manual upgrade?')%(self.name, self["B"].getCurrent()[0][4]), MessageBox.TYPE_YESNO, timeout = 20)	
+                self.session.openWithCallback(self.OnDownload, MessageBox, _('The new configurations are saved\nSetting: %s\nDate: %s \n The new setting has a more recent date\nDo you want to proceed with the manual upgrade?')%(self.name, self["B"].getCurrent()[0][4]), MessageBox.TYPE_YESNO, timeout=20)	
               else:
-                self.session.openWithCallback(self.OnDownloadForce, MessageBox, _('Setting already updated, you want to upgrade anyway?'), MessageBox.TYPE_YESNO, timeout = 20)				   		
+                self.session.openWithCallback(self.OnDownloadForce, MessageBox, _('Setting already updated, you want to upgrade anyway?'), MessageBox.TYPE_YESNO, timeout=20)				   		
                         
         def OnDownloadForce(self, conf):
             if conf:		
@@ -326,7 +326,7 @@ class MenuiSettingE2(Screen, ConfigListScreen):
 #timer class
 class NgSetting():
 
-        def __init__(self, session = None):
+        def __init__(self, session=None):
             #duplicated (Reload)
 	    self.Reload = eTimer()				
             self.Reload.callback.append(self.ReloadGui) 
@@ -474,6 +474,6 @@ def Main(session, **kwargs):
 
                   
 def Plugins(**kwargs):
-    return [PluginDescriptor(name = 'Vhannibal AutoSetting '+Version, description = 'Vhannibal Official Plugin by NGSetting', icon = 'Panel/Vhannibal.png', where = [PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_PLUGINMENU], fnc = Main),
+    return [PluginDescriptor(name='Vhannibal AutoSetting '+Version, description='Vhannibal Official Plugin by NGSetting', icon='Panel/Vhannibal.png', where=[PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_PLUGINMENU], fnc=Main),
             PluginDescriptor(where=PluginDescriptor.WHERE_SESSIONSTART, fnc=SessionStart),
             PluginDescriptor(where=PluginDescriptor.WHERE_AUTOSTART, fnc=AutoStart)]
