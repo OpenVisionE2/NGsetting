@@ -132,8 +132,8 @@ class MenuSelect(Screen, ConfigListScreen):
               "up": self.keyUp,
               "down": self.keyDown,				
               "cancel": self.Uscita,
-              "nextBouquet":self["B"].pageUp,
-              "prevBouquet":self["B"].pageDown,							
+              "nextBouquet": self["B"].pageUp,
+              "prevBouquet": self["B"].pageDown,							
               "red": self.Uscita   							
             }, -1)					
                         

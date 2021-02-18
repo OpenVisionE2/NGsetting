@@ -291,7 +291,7 @@ class MenuiSettingE2(Screen, ConfigListScreen):
             iTimerClass.StopTimer()	
             iTimerClass.startTimerSetting(True)		
           
-        def OnDownload(self,conf,noForce=True):
+        def OnDownload(self, conf, noForce=True):
             if conf:	
               if noForce:			
                 WriteSave(self.name, self.AutoTimer, self.jType, self.Data, self.Personal, self.DowDate)				   
@@ -400,7 +400,7 @@ class NgSetting():
            
            self.TimerSetting()	
 
-        def startTimerSetting(self,Auto=False):
+        def startTimerSetting(self, Auto=False):
             self.AutoTimer, NameSat, Data, self.Type, self.Personal, DowDate = Load()				
             def OnDsl():
                 try:  
