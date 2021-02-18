@@ -4,7 +4,7 @@ from distutils.core import setup
 import setup_translate
 
 pkg = 'Extensions.NGsetting'
-setup (name='enigma2-plugin-extensions-ngsetting',
+setup(name='enigma2-plugin-extensions-ngsetting',
        version='1.1',
        description='NGsetting plugin for Vhannibal settings',
        packages=[pkg],

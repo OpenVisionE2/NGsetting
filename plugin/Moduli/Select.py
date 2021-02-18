@@ -108,9 +108,9 @@ class MenuSelect(Screen, ConfigListScreen):
             Screen.__init__(self, session)														
             self.ListSelect = ListSelect()   				
             self['autotimer'] = Label("")  
-            self['namesat'] = Label("" )  
+            self['namesat'] = Label("")  
             self['text'] = Label("") 			
-            self['dataDow'] = Label("" )			
+            self['dataDow'] = Label("")			
             self['Green'] = Pixmap()  
             self['Blue'] = Pixmap()  	
             self['Yellow'] = Pixmap() 			
@@ -128,13 +128,13 @@ class MenuSelect(Screen, ConfigListScreen):
             self.Menu()
             self.MenuA()			
             self["actions"]  = ActionMap(["OkCancelActions", "ShortcutActions", "WizardActions", "ColorActions", "SetupActions", "NumberActions", "MenuActions", "HelpActions", "EPGSelectActions"], {
-              "ok"    : self.OkSelect,
-              "up"    : self.keyUp,
-              "down"  : self.keyDown,				
+              "ok": self.OkSelect,
+              "up": self.keyUp,
+              "down": self.keyDown,				
               "cancel": self.Uscita,
               "nextBouquet":self["B"].pageUp,
               "prevBouquet":self["B"].pageDown,							
-              "red" : self.Uscita   							
+              "red": self.Uscita   							
             }, -1)					
                         
         def Info(self):
@@ -200,7 +200,7 @@ class MenuSelect(Screen, ConfigListScreen):
         def Menu(self):		
             self.jA = []
             for dir, name, value in  self.ListSelect.TvList():
-              if  name != 'Digitale Terrestre'  and name != 'Favourites (TV)' and name[2:] != 'Vhannibal Settings' :			
+              if  name != 'Digitale Terrestre'  and name != 'Favourites (TV)' and name[2:] != 'Vhannibal Settings':			
                 self.jA.append(self.hauptListEntry(dir, name, value))			
             self["B"].setList(self.jA)		
                        

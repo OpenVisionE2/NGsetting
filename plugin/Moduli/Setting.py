@@ -131,7 +131,7 @@ def StartSavingTerrestrialChannels():
             try:
               shutil.copyfile(NameDirectory, Directory+'/NGsetting/Temp/TerrestrialChannelListArchive')
               return True
-            except :
+            except:
               pass
             return	
 
@@ -159,7 +159,7 @@ def TransferBouquetTerrestrialFinal():
           if DirectoryUserBouquetTerrestrial:
             TrasfBouq = open(DirectoryUserBouquetTerrestrial, 'w')		
             for Line in TerrestrialChannelListArchive:
-              if Line.lower().find('#name') != -1 :
+              if Line.lower().find('#name') != -1:
                 TrasfBouq.write('#NAME Digitale Terrestre\n')
               else:				
                 TrasfBouq.write(Line)

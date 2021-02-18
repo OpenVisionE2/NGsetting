@@ -71,17 +71,17 @@ def Load():
         try:
           LoadDate = line.strip()
           elements = LoadDate.split('=')                                 
-          if LoadDate.find('AutoTimer') != -1 :
+          if LoadDate.find('AutoTimer') != -1:
             AutoTimer = elements[1][1:]  
-          elif LoadDate.find('NameSat') != -1 :
+          elif LoadDate.find('NameSat') != -1:
             NameSat = elements[1][1:]                                        
-          elif LoadDate.find('Data') != -1 :
+          elif LoadDate.find('Data') != -1:
             Data = elements[1][1:]		
-          elif LoadDate.find('Type') != -1 :
+          elif LoadDate.find('Type') != -1:
             Type = elements[1][1:]	
-          elif LoadDate.find('Personal') != -1 :
+          elif LoadDate.find('Personal') != -1:
             Personal = elements[1][1:]	
-          elif LoadDate.find('DowDate') != -1 :
+          elif LoadDate.find('DowDate') != -1:
             DowDate = elements[1][1:]			
         except:
           pass     
@@ -113,6 +113,6 @@ def Plugin():
       response = urllib2.urlopen(req, None, 3)	
       link = response.read()
       response.close()
-      return  re.compile ('<a href="(.+?)" src="(.+?)">updater</a>').findall(link)
+      return  re.compile('<a href="(.+?)" src="(.+?)">updater</a>').findall(link)
     except:
       return

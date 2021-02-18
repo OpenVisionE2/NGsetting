@@ -44,21 +44,21 @@ class MenuiSettingE2(Screen, ConfigListScreen):
             self.skin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/NGsetting")
             Screen.__init__(self, session)									
             self["actions"]  = ActionMap(["OkCancelActions", "ShortcutActions", "WizardActions", "ColorActions", "SetupActions", "NumberActions", "MenuActions", "HelpActions", "EPGSelectActions"], {
-              "ok"    : self.keyOK,
-              "up"    : self.keyUp,
-              "down"  : self.keyDown,
-              "blue"  : self.Auto,		
-              "green"  : self.Lcn,	
-              "yellow"  : self.Select,				  
+              "ok": self.keyOK,
+              "up": self.keyUp,
+              "down": self.keyDown,
+              "blue": self.Auto,		
+              "green": self.Lcn,	
+              "yellow": self.Select,				  
               "cancel": self.exitplug,
-              "left"  : self.keyRightLeft,
-              "right" : self.keyRightLeft,							
-              "red" : self.exitplug   							
+              "left": self.keyRightLeft,
+              "right": self.keyRightLeft,							
+              "red": self.exitplug   							
             }, -1)							                        
             self['autotimer'] = Label("")  
-            self['namesat'] = Label("" )  
-            self['text'] = Label("" ) 			
-            self['dataDow'] = Label("" )			
+            self['namesat'] = Label("")  
+            self['text'] = Label("") 			
+            self['dataDow'] = Label("")			
             self['Green'] = Pixmap()  
             self['Blue'] = Pixmap()  	
             self['Yellow'] = Pixmap() 			
@@ -169,7 +169,7 @@ class MenuiSettingE2(Screen, ConfigListScreen):
                 self.session.open(MessageBox, _("Sorting Lcn Completed"), MessageBox.TYPE_INFO, timeout=5)	
                                 
         def Auto(self):
-            if self.StopAutoWrite :
+            if self.StopAutoWrite:
               return		
             self.StopAutoWrite = True			  
             iTimerClass.StopTimer()	
@@ -275,10 +275,10 @@ class MenuiSettingE2(Screen, ConfigListScreen):
               njData = int(self["B"].getCurrent()[0][1])
             except:	
               njData = 999999				
-            if NameSat != self.name or Type != self.jType :
+            if NameSat != self.name or Type != self.jType:
               self.session.openWithCallback(self.OnDownload, MessageBox, _('The new configurations are saved\nSetting: %s\nDate: %s\nThe choice is different from the previous\nDo you want to proceed with the manual upgrade?')%(self.name, self["B"].getCurrent()[0][4]), MessageBox.TYPE_YESNO, timeout=20)
             else:		
-              if njData > nData :
+              if njData > nData:
                 self.session.openWithCallback(self.OnDownload, MessageBox, _('The new configurations are saved\nSetting: %s\nDate: %s \n The new setting has a more recent date\nDo you want to proceed with the manual upgrade?')%(self.name, self["B"].getCurrent()[0][4]), MessageBox.TYPE_YESNO, timeout=20)	
               else:
                 self.session.openWithCallback(self.OnDownloadForce, MessageBox, _('Setting already updated, you want to upgrade anyway?'), MessageBox.TYPE_YESNO, timeout=20)				   		
