@@ -9,6 +9,8 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 import os
 import re
 import xml.etree.cElementTree
+
+
 def Bouquet():    
     for file in os.listdir("/etc/enigma2/"):
       if re.search('^userbouquet.*.tv', file):
@@ -17,6 +19,8 @@ def Bouquet():
         if re.search("#NAME Digitale Terrestre", x, flags=re.IGNORECASE):
           return "/etc/enigma2/" + file
     return	
+
+
 class LCN():
     service_types_tv = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 22) || (type == 25) || (type == 134) || (type == 195)'
     

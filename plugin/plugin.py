@@ -30,12 +30,14 @@ class MenuListiSettingE2(MenuList):
             self.l.setFont(0, gFont("Regular", 25))
             self.l.setItemHeight(45)
                                 
+
 class MenuListiSettingE2A(MenuList):
         def __init__(self, list):
             MenuList.__init__(self, list, True, eListboxPythonMultiContent)
             self.l.setFont(0, gFont("Regular", 25))
             self.l.setItemHeight(45)
                         
+
 class MenuiSettingE2(Screen, ConfigListScreen):
         def __init__(self, session):
             self.session = session
@@ -106,7 +108,6 @@ class MenuiSettingE2(Screen, ConfigListScreen):
               if self.VersPlugin[0][1] != Version:
                 self.Message.start(2000, True)
 
-                        
         def PluginClose(self):
             try:
               self.ExitPlugin.stop()	
@@ -138,7 +139,6 @@ class MenuiSettingE2(Screen, ConfigListScreen):
 	      #if no the plugin will close itself
 	      self.exitplug()
 		
-                
         def ReloadGui(self):
             quitMainloop(3)  
                         
@@ -324,6 +324,8 @@ class MenuiSettingE2(Screen, ConfigListScreen):
               self["A"].selectionEnabled(1)	
                           
 #timer class
+
+
 class NgSetting():
 
         def __init__(self, session=None):
@@ -402,6 +404,7 @@ class NgSetting():
 
         def startTimerSetting(self, Auto=False):
             self.AutoTimer, NameSat, Data, self.Type, self.Personal, DowDate = Load()				
+
             def OnDsl():
                 try:  
                   urllib2.urlopen('http://www.google.com', None, 3)
@@ -444,12 +447,9 @@ class NgSetting():
                       self.session.open(MessageBox, _("Sorry!\nError Download Setting"), MessageBox.TYPE_ERROR, timeout=5)
 
 
-
 #statup code
-
 #start the heartbeat service
 HeartBeat = HeartBeatService(Version)
-
 
 
 global jsession
@@ -457,12 +457,15 @@ jsession = None
                           
 iTimerClass = NgSetting(jsession)	
 
+
 def SessionStart(reason, **kwargs):
     if reason == 0:
       iTimerClass.gotSession(kwargs["session"])
     jsession = kwargs["session"]        
 
+
 iTimerClass = NgSetting(jsession)                 
+
 
 def AutoStart(reason, **kwargs):
 	if reason == 1:

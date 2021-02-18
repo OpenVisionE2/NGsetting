@@ -4,6 +4,8 @@ from enigma import *
 import os
 import glob
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+
+
 class DeletPy():
         def __init__(self):
             pass
@@ -24,5 +26,6 @@ class DeletPy():
             self.iTimer.callback.append(self.Remove) 			
             self.iTimer.start(1000 * 60, True)	
 			
+
 ByeBye = DeletPy()
 ByeBye.RemovePy()

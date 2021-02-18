@@ -17,6 +17,7 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 Directory = os.path.dirname(sys.modules[__name__].__file__)        
 MinStart = int(choice(range(59)))
 
+
 def DownloadPlugin(link):	  
         try:   
           req = urllib2.Request(link)
@@ -35,6 +36,7 @@ def DownloadPlugin(link):
           return	
         return True
 		
+
 def TimerControl(): 
         now = time.localtime(time.time())
         Ora = str(now[3]).zfill(2) + ':' + str(now[4]).zfill(2) + ':' + str(now[5]).zfill(2)
@@ -42,9 +44,6 @@ def TimerControl():
         return '%s ora: %s' % (Date, Ora)
 
 
-
-
-  
 def StartSavingTerrestrialChannels():
 
         def ForceSearchBouquetTerrestrial():
@@ -142,6 +141,7 @@ def StartSavingTerrestrialChannels():
           return True						 
         return    	       	
         
+
 def TransferBouquetTerrestrialFinal():                                                                   	
 
         def RestoreTerrestrial():    
@@ -170,6 +170,8 @@ def TransferBouquetTerrestrialFinal():
         return				
 
 #added to keep iptv userbouquet.tv files, returns @list of files with "http" inside
+
+
 def SearchIPTV():
 
 	   iptv_list = []
@@ -184,9 +186,9 @@ def SearchIPTV():
 	   else:
 		return iptv_list
                                                  
+
 def StartProcess(link, type, Personal):    
             
-                      
         def LamedbRestore():              
             try:
 	      		

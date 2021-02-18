@@ -13,11 +13,13 @@ from Config import *
 from Language import _
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
+
 class MenuListSelect(MenuList):
         def __init__(self, list):
             MenuList.__init__(self, list, True, eListboxPythonMultiContent)
             self.l.setFont(0, gFont("Regular", 25))
             self.l.setItemHeight(45)
+
 
 class ListSelect():
         def __init__(self):
@@ -99,6 +101,7 @@ class ListSelect():
                self.bouquetlist.append((x[0], x[1], value))
             return self.bouquetlist
                 
+
 class MenuSelect(Screen, ConfigListScreen):
         def __init__(self, session):
             self.session = session

@@ -19,16 +19,19 @@ try:
 except:
   Samanta = "dina"  
   
+
 def ConverDate(data):
     anno = data[:2]
     mese = data[-4:][:2]
     giorno = data[-2:]
     return giorno + '/' + mese + '/' + anno
 
+
 def ConverDate_noyear(data):
     mese = data[-4:][:2]
     giorno = data[-2:]
     return giorno + '/' + mese
+
 
 def TestDsl():	  
         try:   
@@ -41,6 +44,7 @@ def TestDsl():
         except:
           return		
 		  
+
 def DownloadSetting(): 
     list = []   
     try:	
@@ -56,6 +60,7 @@ def DownloadSetting():
       pass	
     return list
 			
+
 def Load():	 
     AutoTimer = '0'
     NameSat = 'Hot Bird 13°E'
@@ -96,6 +101,7 @@ def Load():
       xf.close()	
     return AutoTimer, NameSat, Data, Type, Personal, DowDate	 	
 	
+
 def WriteSave(name, autotimer, Type, Data, Personal, DowDate):
     xf = open(Directory + '/NGsetting/Date', "w")	
     xf.write('AutoTimer = %s\n' % str(autotimer))
@@ -106,6 +112,7 @@ def WriteSave(name, autotimer, Type, Data, Personal, DowDate):
     xf.write('DowDate = %s\n' % str(DowDate))	
     xf.close()
 	
+
 def Plugin():
     try:
       req = urllib2.Request('http://www.vhannibal.net/asu.php')

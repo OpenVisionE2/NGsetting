@@ -17,6 +17,7 @@ try:
 except ImportError:
 	from boxbranding import getBoxType
 
+
 class HeartBeatService():
 	
 	def __init__(self, version):
