@@ -12,10 +12,7 @@ import sys
 import json
 import uuid
 import time
-try:
-	from enigma import getBoxType
-except ImportError:
-	from boxbranding import getBoxType
+from Components.SystemInfo import BoxInfo
 
 
 class HeartBeatService():
@@ -50,7 +47,7 @@ class HeartBeatService():
 
 	def createInfo(self):
 		uid = self.createUid()
-		stb_model = getBoxType()
+		stb_model = BoxInfo.getItem("model")
 		firmware_version = os.popen("cat /etc/issue.net").read()
 
 		#testing time bug, restore to
