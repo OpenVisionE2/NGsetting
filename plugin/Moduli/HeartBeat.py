@@ -1,11 +1,9 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 ########
 ## HeartBeatService class
 ## credits @ livewinter
 #######
 
-from __future__ import print_function
 import os
 import urllib2
 import sys
