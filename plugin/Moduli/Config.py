@@ -14,9 +14,9 @@ if not os.path.exists(Directory + '/NGsetting/Temp'):
     os.system('mkdir  ' + Directory + '/NGsetting/Temp')
 
 try:
-  import dinaconvertdate
+    import dinaconvertdate
 except:
-  Samanta = "dina"
+    Samanta = "dina"
 
 
 def ConverDate(data):
@@ -33,30 +33,30 @@ def ConverDate_noyear(data):
 
 
 def TestDsl():
-        try:
-          req = urllib2.Request("http://www.vhannibal.net/%s.php" % Samanta)
-          req.add_header('User-Agent', "VAS14")
-          response = urllib2.urlopen(req)
-          link = response.read()
-          response.close()
-          return re.compile('<src="(.+?)">', re.DOTALL).findall(link)[0]
-        except:
-          return
+    try:
+        req = urllib2.Request("http://www.vhannibal.net/%s.php" % Samanta)
+        req.add_header('User-Agent', "VAS14")
+        response = urllib2.urlopen(req)
+        link = response.read()
+        response.close()
+        return re.compile('<src="(.+?)">', re.DOTALL).findall(link)[0]
+    except:
+        return
 
 
 def DownloadSetting():
     list = []
     try:
-      req = urllib2.Request('http://www.vhannibal.net/asd.php')
-      req.add_header('User-Agent', "VAS14")
-      response = urllib2.urlopen(req)
-      link = response.read()
-      response.close()
-      xx = re.compile('<td><a href="(.+?)">(.+?)</a></td>.*?<td>(.+?)</td>', re.DOTALL).findall(link)
-      for link, name, date in xx:
-        list.append((date, name.replace('Vhannibal ', ''), 'http://www.vhannibal.net/' + link))
+        req = urllib2.Request('http://www.vhannibal.net/asd.php')
+        req.add_header('User-Agent', "VAS14")
+        response = urllib2.urlopen(req)
+        link = response.read()
+        response.close()
+        xx = re.compile('<td><a href="(.+?)">(.+?)</a></td>.*?<td>(.+?)</td>', re.DOTALL).findall(link)
+        for link, name, date in xx:
+            list.append((date, name.replace('Vhannibal ', ''), 'http://www.vhannibal.net/' + link))
     except:
-      pass
+        pass
     return list
 
 
@@ -68,36 +68,36 @@ def Load():
     Personal = '0'
     DowDate = '0'
     if os.path.exists(Directory + '/NGsetting/Date'):
-      xf = open(Directory + '/NGsetting/Date', "r")
-      f = xf.readlines()
-      xf.close()
-      for line in f:
-        try:
-          LoadDate = line.strip()
-          elements = LoadDate.split('=')
-          if LoadDate.find('AutoTimer') != -1:
-            AutoTimer = elements[1][1:]
-          elif LoadDate.find('NameSat') != -1:
-            NameSat = elements[1][1:]
-          elif LoadDate.find('Data') != -1:
-            Data = elements[1][1:]
-          elif LoadDate.find('Type') != -1:
-            Type = elements[1][1:]
-          elif LoadDate.find('Personal') != -1:
-            Personal = elements[1][1:]
-          elif LoadDate.find('DowDate') != -1:
-            DowDate = elements[1][1:]
-        except:
-          pass
+        xf = open(Directory + '/NGsetting/Date', "r")
+        f = xf.readlines()
+        xf.close()
+        for line in f:
+            try:
+                LoadDate = line.strip()
+                elements = LoadDate.split('=')
+                if LoadDate.find('AutoTimer') != -1:
+                    AutoTimer = elements[1][1:]
+                elif LoadDate.find('NameSat') != -1:
+                    NameSat = elements[1][1:]
+                elif LoadDate.find('Data') != -1:
+                    Data = elements[1][1:]
+                elif LoadDate.find('Type') != -1:
+                    Type = elements[1][1:]
+                elif LoadDate.find('Personal') != -1:
+                    Personal = elements[1][1:]
+                elif LoadDate.find('DowDate') != -1:
+                    DowDate = elements[1][1:]
+            except:
+                pass
     else:
-      xf = open(Directory + '/NGsetting/Date', "w")
-      xf.write('AutoTimer = 0\n')
-      xf.write('NameSat= Hot Bird 13°E\n')
-      xf.write('Data = 0\n')
-      xf.write('Type = 0\n')
-      xf.write('Personal = 0\n')
-      xf.write('DowDate = 0\n')
-      xf.close()
+        xf = open(Directory + '/NGsetting/Date', "w")
+        xf.write('AutoTimer = 0\n')
+        xf.write('NameSat= Hot Bird 13°E\n')
+        xf.write('Data = 0\n')
+        xf.write('Type = 0\n')
+        xf.write('Personal = 0\n')
+        xf.write('DowDate = 0\n')
+        xf.close()
     return AutoTimer, NameSat, Data, Type, Personal, DowDate
 
 
@@ -114,11 +114,11 @@ def WriteSave(name, autotimer, Type, Data, Personal, DowDate):
 
 def Plugin():
     try:
-      req = urllib2.Request('http://www.vhannibal.net/asu.php')
-      req.add_header('User-Agent', "VAS14")
-      response = urllib2.urlopen(req, None, 3)
-      link = response.read()
-      response.close()
-      return re.compile('<a href="(.+?)" src="(.+?)">updater</a>').findall(link)
+        req = urllib2.Request('http://www.vhannibal.net/asu.php')
+        req.add_header('User-Agent', "VAS14")
+        response = urllib2.urlopen(req, None, 3)
+        link = response.read()
+        response.close()
+        return re.compile('<a href="(.+?)" src="(.+?)">updater</a>').findall(link)
     except:
-      return
+        return
