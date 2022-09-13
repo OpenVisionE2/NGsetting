@@ -76,7 +76,7 @@ class LCN():
                 value = x[0]
                 cmd = "x[0] = " + rule
                 try:
-                    exec cmd
+                    exec(cmd)
                 except Exception as e:
                     print(str(e))
 
